@@ -27,8 +27,7 @@ Voiceroidをコンソール上で喋らせることを目的にしたプログ�
 
 ### ダウンロード
 
-* [64bit版](https://github.com/yukaary/VoiceroidTalker/blob/master/VoiceroidTalker/bin/Release/VoiceroidTalker.exe)
-* [32bit版](https://github.com/yukaary/VoiceroidTalker/blob/master/VoiceroidTalker/bin/x86/Release/VoiceroidTalker.exe)
+* [VoiceroidTalker.exe](https://github.com/yukaary/VoiceroidTalker/blob/master/product/VoiceroidTalker.exe)
 
 ### 使い方
 
