@@ -19,20 +19,31 @@ namespace VoiceroidTalker
     {
         static void Main(string[] args)
         {
+            if (args.Length < 4)
+            {
+                Console.WriteLine("few arguments.");
+                Console.WriteLine("");
+                PrintUsage();
+                return;
+            }
+
             Dictionary<string, string> argsMap = ParseArgs(args);
 
             string command = argsMap["command"];
 
             if(argsMap["message"] == string.Empty)
             {
-                Console.WriteLine("メッセージが空っぽだよ。");
+                Console.WriteLine("message is empty.");
+                Console.WriteLine("");
+                PrintUsage();
                 return;
             }
 
             Voiceroid voiceroid = find(argsMap["-v"]);
             if (voiceroid == null)
             {
-                Console.WriteLine("ボイスロイドプロセス「{0}」を発見できません。", argsMap["-v"]);
+                Console.WriteLine("Can't find voiceroid process {0}.", argsMap["-v"]);
+                Console.WriteLine("");
                 return;
             }
 
@@ -48,6 +59,8 @@ namespace VoiceroidTalker
                     Record(voiceroid, argsMap, true);
                     break;
                 default:
+                    Console.WriteLine("unsupported command: {0}.", command);
+                    Console.WriteLine("");
                     PrintUsage();
                     break;
             }
@@ -63,7 +76,8 @@ namespace VoiceroidTalker
                 case "maki":
                     return Makiroid.getInstance();
                 default:
-                    Console.WriteLine("{0}はサポート外。yukariかmakiで試して欲しいのん。", name);
+                    Console.WriteLine("{0} is not a supported voiceroid. try yukari or maki.", name);
+                    Console.WriteLine("");
                     return null;
             }
         }
@@ -80,7 +94,7 @@ namespace VoiceroidTalker
             String file = argsMap["-f"];
             if(file.Length < 1)
             {
-                Console.WriteLine("保存先が指定されていないためデフォルト値「voice.wav」を使います。");
+                Console.WriteLine("output file is not spexified. save default path, voice.wav.");
                 file = "voice.wav";
             }
             string message = argsMap["message"];
@@ -98,6 +112,16 @@ namespace VoiceroidTalker
         private static void PrintUsage()
         {
             Console.WriteLine("Usage:");
+            Console.WriteLine("    VoiceroidTalker <command> <message> -v <voiceroid> -f <filepath>");
+            Console.WriteLine("");
+            Console.WriteLine("    Parameters");
+            Console.WriteLine("        (required) command:");
+            Console.WriteLine("            talk   : play message on GUI.");
+            Console.WriteLine("            save   : save wav file into specified file path.");
+            Console.WriteLine("            record : save wav file into specified file path, then play that wav.");
+            Console.WriteLine("        (required) message: message should not be empty.");
+            Console.WriteLine("        (required) -v: specify voideroid. set yukari or maki");
+            Console.WriteLine("          (option) -f: specify file path to save wav. default is voice.wav.");
         }
 
         private static Dictionary<string, string> ParseArgs(string[] args)
@@ -109,11 +133,6 @@ namespace VoiceroidTalker
             argsMap["message"] = "";
             argsMap["-v"] = "";
             argsMap["-f"] = "";
-
-            //argsMap.Add("command", "");
-            //argsMap.Add("message", "");
-            //argsMap.Add("-v", "");
-            //argsMap.Add("-f", "");
 
             // 4 arguments are required at least.
             if(args.Length < 4)
