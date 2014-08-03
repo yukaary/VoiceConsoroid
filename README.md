@@ -25,15 +25,18 @@ Voiceroidをコンソール上で喋らせることを目的にしたプログ�
 
 パッケージ版と変わらないとは思いますが念のため。
 
-### ダウンロード
-
-* [64bit](https://github.com/yukaary/VoiceroidTalker/blob/master/product/x64/VoiceroidTalker.exe)
-* [32bit](https://github.com/yukaary/VoiceroidTalker/blob/master/product/x86/VoiceroidTalker.exe)
-
 
 ### 使い方
 
-* 上記リンクから自分の環境にあったexeファイルをダウンロード、適当なディレクトリに置いてください。
+
+* git cloneで一式を取得してください。
+
+```
+$ git clone https://github.com/yukaary/VoiceroidTalker.git
+```
+
+* `product/VoiceroidTalker.exe`がコンパイル済みの実行ファイルです。
+  - パスを通すなりなんなりしてください。
 * ボイスロイドを起動します。Windows8の人は怒りの連続クリックだ！
 * おもむろにコマンドを打ちます。
 
