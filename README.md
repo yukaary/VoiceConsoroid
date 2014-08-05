@@ -1,4 +1,4 @@
-# Voiceroid Talker
+# VoiceConsoroid
 
 ## 概要
 
@@ -32,10 +32,10 @@ Voiceroidをコンソール上で喋らせることを目的にしたプログ�
 * git cloneで一式を取得してください。
 
 ```
-$ git clone https://github.com/yukaary/VoiceroidTalker.git
+$ git clone https://github.com/yukaary/VoiceConsoroid.git
 ```
 
-* `product/VoiceroidTalker.exe`がコンパイル済みの実行ファイルです。
+* `product/VoiceConsoroid.exe`がコンパイル済みの実行ファイルです。
   - パスを通すなりなんなりしてください。
 * ボイスロイドを起動します。Windows8の人は怒りの連続クリックだ！
 * おもむろにコマンドを打ちます。
@@ -43,7 +43,7 @@ $ git clone https://github.com/yukaary/VoiceroidTalker.git
 #### コマンド
 
 ```
-VoiceroidTalker <command> <message> -v <voiceroid> -f <filepath>
+VoiceConsoroid <command> <message> -v <voiceroid> -f <filepath>
 ```
 
 * command
@@ -62,19 +62,19 @@ VoiceroidTalker <command> <message> -v <voiceroid> -f <filepath>
 ##### 単純にしゃべらせる.
 
 ```
-$ VoiceroidTalker talk "こんにちわー" -v yukari
+$ VoiceConsoroid talk "こんにちわー" -v yukari
 ```
 
 ##### 保存する。
 
 ```
-$ VoiceroidTalker save "やったぜ" -v maki -f yatta.wav
+$ VoiceConsoroid save "やったぜ" -v maki -f yatta.wav
 ```
 
 ##### 保存後に再生。
 
 ```
-$ VoiceroidTalker record "なんで元からコンソールサポートしてないのん？" -v yukari -f yatta.wav
+$ VoiceConsoroid record "なんで元からコンソールサポートしてないのん？" -v yukari -f yatta.wav
 ```
 
 ## 注意点
