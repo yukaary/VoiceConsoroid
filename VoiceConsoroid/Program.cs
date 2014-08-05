@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 
 /**
- * VoiceroidTalker.
+ * VoiceConsoroid
  */
-namespace VoiceroidTalker
+namespace VoiceConsoroid
 {
     class Program
     {
@@ -112,7 +112,7 @@ namespace VoiceroidTalker
         private static void PrintUsage()
         {
             Console.WriteLine("Usage:");
-            Console.WriteLine("    VoiceroidTalker <command> <message> -v <voiceroid> -f <filepath>");
+            Console.WriteLine("    VoiceConsoroid <command> <message> -v <voiceroid> -f <filepath>");
             Console.WriteLine("");
             Console.WriteLine("    Parameters");
             Console.WriteLine("        (required) command:");

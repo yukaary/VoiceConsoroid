@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
-namespace VoiceroidTalker
+namespace VoiceConsoroid
 {
     /// <summary>
     /// Subset of Windows Messages.

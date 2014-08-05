@@ -55,9 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VoiceroidTalker\VoiceroidTalker.csproj">
+    <ProjectReference Include="..\VoiceConsoroid\VoiceConsoroid.csproj">
       <Project>{e00fd901-0523-49f5-a525-9d1a081e183b}</Project>
-      <Name>VoiceroidTalker</Name>
+      <Name>VoiceConsoroid</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

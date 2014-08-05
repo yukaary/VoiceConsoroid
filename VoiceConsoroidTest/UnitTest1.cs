@@ -1,5 +1,5 @@
 ﻿using System;
-using VoiceroidTalker;
+using VoiceConsoroid;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace VoiceroidTalkerTest

@@ -7,8 +7,8 @@
     <ProjectGuid>{E00FD901-0523-49F5-A525-9D1A081E183B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VoiceroidTalker</RootNamespace>
-    <AssemblyName>VoiceroidTalker</AssemblyName>
+    <RootNamespace>VoiceConsoroid</RootNamespace>
+    <AssemblyName>VoiceConsoroid</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>

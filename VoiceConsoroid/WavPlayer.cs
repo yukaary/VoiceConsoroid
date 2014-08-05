@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Media;
 
-namespace VoiceroidTalker
+namespace VoiceConsoroid
 {
     /// <summary>
     /// Voivceroidが生成したwavの再生用。

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VoiceroidTalker
+namespace VoiceConsoroid
 {
     /// <summary>
     /// C#が提供するWindows基本機能をまとめたクラス。

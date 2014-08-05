@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace VoiceroidTalker
+namespace VoiceConsoroid
 {
     public abstract class Voiceroid
     {
