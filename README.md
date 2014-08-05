@@ -52,6 +52,8 @@ VoiceConsoroid <command> <message> -v <voiceroid> -f <filepath>
   - record wavを指定したファイルに保存すると同時に保存後にwavを再生
 * message
   - しゃべってもらう内容。`"`で括りましょう。
+* voiceroid
+  - ボイスロイドの指定。 `yuakri` または `maki` を指定してください。
 * filepath
   - 保存先のファイルパス。
 
