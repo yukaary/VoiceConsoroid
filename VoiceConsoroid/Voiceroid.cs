@@ -39,8 +39,8 @@ namespace VoiceConsoroid
         /// 保存に成功した場合、デフォルトで3秒間待機します。待機する必要がない場合は
         /// 明示的にsleepを0にしてください。
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="sleep"></param>
+        /// <param name="path">保存パス</param>
+        /// <param name="sleep">保存処理を待つ時間</param>
         public WavPlayer Save(String path, int sleep=3000)
         {
             String fullpath = Path.GetFullPath(path);
@@ -57,7 +57,7 @@ namespace VoiceConsoroid
 
             if(sleep > 0)
             {
-                System.Threading.Thread.Sleep(3 * 1000);
+                System.Threading.Thread.Sleep(sleep);
             }
             return new WavPlayer(fullpath);
         }
@@ -67,6 +67,7 @@ namespace VoiceConsoroid
         /// Voiceroidの種類別に異なりそう（具体的にはずんちゃん）なので抽象メソッド化してあります。
         /// </summary>
         /// <param name="path"></param>
+        /// <param name="waitingTime">保存ボタンを押してから待機する時間(msec).</param>
         protected abstract bool DoSave(String path, int waitingTime = 1000);
 
         /// <summary>
