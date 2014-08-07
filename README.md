@@ -43,17 +43,16 @@ $ git clone https://github.com/yukaary/VoiceConsoroid.git
 #### コマンド
 
 ```
-VoiceConsoroid <command> <message> -v <voiceroid> -f <filepath>
+VoiceConsoroid <voiceroid> <command> <message> -f <filepath>
 ```
-
+* voiceroid
+  - ボイスロイドの指定。 `yuakri` または `maki` を指定してください。
 * command
   - talk 再生ボタンを押してしゃべってもらう
   - save wavを指定したファイルに保存する
   - record wavを指定したファイルに保存すると同時に保存後にwavを再生
 * message
   - しゃべってもらう内容。`"`で括りましょう。
-* voiceroid
-  - ボイスロイドの指定。 `yuakri` または `maki` を指定してください。
 * filepath
   - 保存先のファイルパス。
 
@@ -64,19 +63,19 @@ VoiceConsoroid <command> <message> -v <voiceroid> -f <filepath>
 ##### 単純にしゃべらせる.
 
 ```
-$ VoiceConsoroid talk "こんにちわー" -v yukari
+$ VoiceConsoroid yukari talk "こんにちわー"
 ```
 
 ##### 保存する。
 
 ```
-$ VoiceConsoroid save "やったぜ" -v maki -f yatta.wav
+$ VoiceConsoroid maki save "やったぜ" -f yatta.wav
 ```
 
 ##### 保存後に再生。
 
 ```
-$ VoiceConsoroid record "なんで元からコンソールサポートしてないのん？" -v yukari -f yatta.wav
+$ VoiceConsoroid yukari record "なんで元からコンソールサポートしてないのん？" -f yukari.wav
 ```
 
 ## 注意点
