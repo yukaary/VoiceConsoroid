@@ -12,7 +12,7 @@ namespace VoiceroidTalkerTest
         {
             Voiceroid yukarin = Yukaroid.getInstance();
 
-            yukarin.CopyAndPaste("ここをこうして、こっちはこんなふうにして...。がさごそ。がさごそ。");
+            yukarin.CopyAndPaste("ここをこうして、こっちはこんなふうにして...。");
             yukarin.Save("voice01.wav").PlaySync();
 
             yukarin.CopyAndPaste("うごけうごけ。");
@@ -44,6 +44,43 @@ namespace VoiceroidTalkerTest
             Voiceroid maki = Makiroid.getInstance();
             maki.CopyAndPaste("あれれー？");
             maki.Play();
+        }
+
+        [TestMethod]
+        public void ZunCopyAndPaste()
+        {
+            Voiceroid zunko = VoiceroidTypeB.getInstance();
+            zunko.CopyAndPaste("ずんだもち食え");
+            zunko.CopyAndPaste("枝豆うまうま");
+        }
+
+        [TestMethod]
+        public void ZunPlay()
+        {
+            Voiceroid zunko = VoiceroidTypeB.getInstance();
+            zunko.CopyAndPaste("ずんだもち食え");
+            zunko.Play();
+        }
+
+        [TestMethod]
+        public void ZunSave()
+        {
+            Voiceroid zunko = VoiceroidTypeB.getInstance();
+            zunko.CopyAndPaste("保存しますね。");         
+            zunko.Save("zunko.wav");
+        }
+
+        [TestMethod]
+        public void ZunRecording()
+        {
+            Voiceroid zunko = VoiceroidTypeB.getInstance();
+            zunko.CopyAndPaste("そろそろ私もデビューですね。");
+            zunko.Save("zunko1.wav").PlaySync();
+
+            System.Threading.Thread.Sleep(1000);
+
+            zunko.CopyAndPaste("ふふふ。ゆかりちゃんとまきちゃんと一緒。");
+            zunko.Save("zunko2.wav").PlaySync();
         }
     }
 }

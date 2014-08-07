@@ -4,7 +4,7 @@
 
 Voiceroidをコンソール上で喋らせることを目的にしたプログラムです。
 
-現在、結月ゆかりと民安ともえに対応しています。
+現在、結月ゆかり, 民安ともえ, 東北ずんこに対応しています。
 
 大雑把に以下の処理ができるような。
 
@@ -43,10 +43,10 @@ $ git clone https://github.com/yukaary/VoiceConsoroid.git
 #### コマンド
 
 ```
-VoiceConsoroid <voiceroid> <command> <message> -f <filepath>
+VoiceConsoroid <voiceroid> <command> <message> <filepath>
 ```
 * voiceroid
-  - ボイスロイドの指定。 `yuakri` または `maki` を指定してください。
+  - ボイスロイドの指定。 `yuakri`, `maki` または `zunko` を指定してください。
 * command
   - talk 再生ボタンを押してしゃべってもらう
   - save wavを指定したファイルに保存する
@@ -69,13 +69,13 @@ $ VoiceConsoroid yukari talk "こんにちわー"
 ##### 保存する。
 
 ```
-$ VoiceConsoroid maki save "やったぜ" -f yatta.wav
+$ VoiceConsoroid maki save "やったぜ" yatta.wav
 ```
 
 ##### 保存後に再生。
 
 ```
-$ VoiceConsoroid yukari record "なんで元からコンソールサポートしてないのん？" -f yukari.wav
+$ VoiceConsoroid zunko record "なんで元からコンソールサポートしてないのかなぁ" zunko.wav
 ```
 
 ## 注意点

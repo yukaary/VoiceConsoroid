@@ -12,9 +12,6 @@ namespace VoiceConsoroid
     /// </summary>
     public abstract class VoiceroidTypeA : Voiceroid
     {
-        const string makimaki = "VOICEROID＋ 民安ともえ";
-        const string yukarin = "VOICEROID＋ 結月ゆかり";
-
         const string saveDiagTitle = "音声ファイルの保存";
 
         /// <summary>
@@ -45,7 +42,7 @@ namespace VoiceConsoroid
             SystemHelper.Clip(text);
             System.Threading.Thread.Sleep(waitingTime);
             // クリップボードにコピーしたテキストを貼り付け.
-            User32Util.SendMessageSafety(_process.MainWindowHandle, WM.COMMAND, ACTION.PASTE, WM.NULL);
+            User32Util.SendMessageSafety(_process.MainWindowHandle, WM.COMMAND, ACTION.PASTE, 0);
         }
 
         public override void Play()
@@ -79,7 +76,7 @@ namespace VoiceConsoroid
             User32Util.SendMessageSafety(hFilenameTextBox, WM.ADDSTRING, ACTION.NULL, path);
 
             // 下キーを送信しPathを表示
-            User32Util.SendMessageSafety(hFilenameTextBox, WM.KEYDOWN, ACTION.VK_DOWN, WM.NULL);
+            User32Util.SendMessageSafety(hFilenameTextBox, WM.KEYDOWN, ACTION.VK_DOWN, 0);
             System.Threading.Thread.Sleep(100);
 
             // 保存ボタンクリック
@@ -200,8 +197,8 @@ namespace VoiceConsoroid
 
         protected override void ResetText()
         {
-            User32Util.SendMessageSafety(_process.MainWindowHandle, WM.COMMAND, ACTION.SELECTALL, WM.NULL);
-            User32Util.SendMessageSafety(_process.MainWindowHandle, WM.COMMAND, ACTION.CUT, WM.NULL);
+            User32Util.SendMessageSafety(_process.MainWindowHandle, WM.COMMAND, ACTION.SELECTALL, 0);
+            User32Util.SendMessageSafety(_process.MainWindowHandle, WM.COMMAND, ACTION.CUT, 0);
         }
     }
 
@@ -234,7 +231,7 @@ namespace VoiceConsoroid
         protected override void ResetText()
         {
             // まさかの全選択が無いとはっ マジックナンバー46orz
-            User32Util.SendMessageSafety(_process.MainWindowHandle, WM.COMMAND, 46, WM.NULL);
+            User32Util.SendMessageSafety(_process.MainWindowHandle, WM.COMMAND, 46, 0);
         }
     }
 }

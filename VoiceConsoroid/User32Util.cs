@@ -62,6 +62,9 @@ namespace VoiceConsoroid
         [DllImport("user32.dll")]
         private static extern IntPtr GetWindow(IntPtr hWnd, GW_COMMAND uCmd);
 
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
+
         /// <summary>
         /// 指定された文字列と一致するクラス名とウィンドウ名を持つトップレベルウィンドウ（ 親を持たないウィンドウ）のハンドルを返します。
         /// この関数は、子ウィンドウは探しません。検索では、大文字小文字は区別されません。
@@ -125,7 +128,7 @@ namespace VoiceConsoroid
             IntPtr windowHandle,
             uint Msg,
             uint wParam,
-            uint lParam,
+            int lParam,
             SmtoFlag flags,
             uint timeout,
             out IntPtr result);
@@ -198,14 +201,31 @@ namespace VoiceConsoroid
 
         /// <summary>
         /// 指定したウィンドウにメッセージを送る。
-        /// 20000ms後に応答が無い場合はタイムアウトし、IntPtr.Zeroを返しますはずです。
+        /// メッセージ送信後のタイムアウト時間を設定できます。デフォルトは20000msです。
+        /// タイムアウト時間内に応答が無い場合はタイムアウト、IntPtr.Zeroを返しますはずです。
         /// </summary>
         /// <param name="wndHandle"></param>
         /// <param name="wm"></param>
         /// <param name="wParam"></param>
         /// <param name="lParam"></param>
         /// <returns></returns>
-        public static IntPtr SendMessageSafety(IntPtr wndHandle, uint wm, uint wParam, uint lParam)
+        public static IntPtr SendMessageSafety(IntPtr wndHandle, uint wm, uint wParam, int lParam, uint timeout = 20000)
+        {
+            IntPtr useless;
+            return SendMessageTimeout(wndHandle, wm, wParam, lParam,
+                SmtoFlag.ABORTIFHUNG, timeout, out useless);
+        }
+
+        /// <summary>
+        /// 指定したウィンドウにメッセージを送る。
+        /// メッセージ送信後のタイムアウト時間を設定できます。デフォルトは100msです。
+        /// </summary>
+        /// <param name="wndHandle"></param>
+        /// <param name="wm"></param>
+        /// <param name="wParam"></param>
+        /// <param name="lParam"></param>
+        /// <returns></returns>
+        public static IntPtr SendMessageUnsafety(IntPtr wndHandle, uint wm, uint wParam, int lParam, int timeout=100)
         {
             IntPtr useless;
             return SendMessageTimeout(wndHandle, wm, wParam, lParam,

@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Voiceroid.cs" />
     <Compile Include="VoiceroidTypeA.cs" />
+    <Compile Include="VoiceroidTypeB.cs" />
     <Compile Include="WavPlayer.cs" />
   </ItemGroup>
   <ItemGroup>

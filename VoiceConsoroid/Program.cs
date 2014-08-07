@@ -42,7 +42,7 @@ namespace VoiceConsoroid
             Voiceroid voiceroid = find(argsMap["voice"]);
             if (voiceroid == null)
             {
-                Console.WriteLine("Can't find voiceroid process {0}.", argsMap["-v"]);
+                Console.WriteLine("Can't find voiceroid process {0}.", argsMap["voice"]);
                 Console.WriteLine("");
                 return;
             }
@@ -75,8 +75,10 @@ namespace VoiceConsoroid
                     return Yukaroid.getInstance();
                 case "maki":
                     return Makiroid.getInstance();
+                case "zunko":
+                    return VoiceroidTypeB.getInstance();
                 default:
-                    Console.WriteLine("{0} is not a supported voiceroid. try yukari or maki.", name);
+                    Console.WriteLine("{0} is not a supported voiceroid. try yukari or maki or zunko.", name);
                     Console.WriteLine("");
                     return null;
             }
@@ -91,7 +93,7 @@ namespace VoiceConsoroid
 
         private static void Record(Voiceroid voiceroid, Dictionary<string, string> argsMap, bool isPlay=false)
         {
-            String file = argsMap["-f"];
+            String file = argsMap["file"];
             if(file.Length < 1)
             {
                 Console.WriteLine("output file is not spexified. save default path, voice.wav.");
@@ -112,16 +114,16 @@ namespace VoiceConsoroid
         private static void PrintUsage()
         {
             Console.WriteLine("Usage:");
-            Console.WriteLine("    VoiceConsoroid <voiceroid> <command> <message> -f <filepath>");
+            Console.WriteLine("    VoiceConsoroid <voiceroid> <command> <message> <filepath>");
             Console.WriteLine("");
             Console.WriteLine("    Parameters");
-            Console.WriteLine("        (required) voiceroid: specify voideroid. set yukari or maki");
+            Console.WriteLine("        (required) voiceroid: specify voideroid. You can specify 3 girls, yukari, maki, zunko");
             Console.WriteLine("        (required) command:");
             Console.WriteLine("            talk   : play message on GUI.");
             Console.WriteLine("            save   : save wav file into specified file path.");
             Console.WriteLine("            record : save wav file into specified file path, then play that wav.");
-            Console.WriteLine("        (required) message: message should not be empty.");
-            Console.WriteLine("          (option) -f: specify file path to save wav. default is voice.wav.");
+            Console.WriteLine("        (required)  message: message should not be empty.");
+            Console.WriteLine("          (option) filepath: specify file path to save wav. default is voice.wav.");
         }
 
         private static Dictionary<string, string> ParseArgs(string[] args)
@@ -132,7 +134,7 @@ namespace VoiceConsoroid
             argsMap["voice"] = "";
             argsMap["command"] = "";
             argsMap["message"] = "";
-            argsMap["-f"] = "";
+            argsMap["file"] = "";
 
             // store voiceroid
             argsMap["voice"] = args[0];
@@ -141,10 +143,9 @@ namespace VoiceConsoroid
             // store message.
             argsMap["message"] = args[2];
 
-            // store options
-            for(int i = 3; i < args.Length; i+=2)
+            if(args.Length == 4)
             {
-                argsMap[args[i]] = args[i + 1];
+                argsMap["file"] = args[3];
             }
 
             return argsMap;
