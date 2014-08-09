@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using VoiceConsoroid;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,18 +9,18 @@ namespace VoiceroidTalkerTest
     public class UnitTest
     {
         [TestMethod]
-        public void SaveAndPlay()
+        public async Task SaveAndPlay()
         {
             Voiceroid yukarin = Yukaroid.getInstance();
 
             yukarin.CopyAndPaste("ここをこうして、こっちはこんなふうにして...。");
-            yukarin.Save("voice01.wav").PlaySync();
+            await yukarin.Record("voice01.wav");
 
             yukarin.CopyAndPaste("うごけうごけ。");
-            yukarin.Save("voice02.wav").PlaySync();
+            await yukarin.Record("voice02.wav");
 
             yukarin.CopyAndPaste("動いた！！。やりましたよまきさん。");
-            yukarin.Save("voice03.wav").PlaySync();
+            await yukarin.Record("voice03.wav");
 
             // assert voice01-03.wav and voice01-03.txt should be exist.
             // also it should play a voice, but there are no way to test it =(.
@@ -71,16 +72,14 @@ namespace VoiceroidTalkerTest
         }
 
         [TestMethod]
-        public void ZunRecording()
+        public async Task ZunRecording()
         {
             Voiceroid zunko = VoiceroidTypeB.getInstance();
             zunko.CopyAndPaste("そろそろ私もデビューですね。");
-            zunko.Save("zunko1.wav").PlaySync();
-
-            System.Threading.Thread.Sleep(1000);
+            await zunko.Record("zunko1.wav");
 
             zunko.CopyAndPaste("ふふふ。ゆかりちゃんとまきちゃんと一緒。");
-            zunko.Save("zunko2.wav").PlaySync();
+            await zunko.Record("zunko2.wav");
         }
     }
 }

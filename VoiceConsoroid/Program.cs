@@ -47,16 +47,28 @@ namespace VoiceConsoroid
                 return;
             }
 
-            switch(command)
+            // wait async execution.
+            // reffered from http://stackoverflow.com/questions/9208921/async-on-main-method-of-console-app
+            Task.Run(async () =>
+            {
+                await executeCommand(voiceroid, command, argsMap);
+            }).Wait();
+
+            return;
+        }
+
+        private static async Task executeCommand(Voiceroid voiceroid, string command, Dictionary<string, string> argsMap)
+        {
+            switch (command)
             {
                 case "talk":
                     Talk(voiceroid, argsMap);
                     break;
                 case "save":
-                    Record(voiceroid, argsMap);
+                    await Record(voiceroid, argsMap);
                     break;
                 case "record":
-                    Record(voiceroid, argsMap, true);
+                    await Record(voiceroid, argsMap, true);
                     break;
                 default:
                     Console.WriteLine("unsupported command: {0}.", command);
@@ -91,7 +103,7 @@ namespace VoiceConsoroid
             voiceroid.Play();
         }
 
-        private static void Record(Voiceroid voiceroid, Dictionary<string, string> argsMap, bool isPlay=false)
+        private static async Task Record(Voiceroid voiceroid, Dictionary<string, string> argsMap, bool isPlay=false)
         {
             String file = argsMap["file"];
             if(file.Length < 1)
@@ -103,11 +115,11 @@ namespace VoiceConsoroid
             voiceroid.CopyAndPaste(message);
             if (!isPlay)
             {
-                voiceroid.Save(file);
+                await voiceroid.Save(file);
             }
             else
             {
-                voiceroid.Save(file).PlaySync();
+                await voiceroid.Record(file);
             }
         }
 

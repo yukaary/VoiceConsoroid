@@ -40,8 +40,28 @@ namespace VoiceConsoroid
         /// 明示的にsleepを0にしてください。
         /// </summary>
         /// <param name="path">保存パス</param>
-        /// <param name="sleep">保存処理を待つ時間</param>
-        public WavPlayer Save(String path, int sleep=3000)
+        public async Task Save(String path)
+        {
+            string fullpath = DoSave(path);
+            if(fullpath == null)
+            {
+                return;
+            }
+            await Task.Run(() => monitorVoiceGeneration(fullpath));
+        }
+
+        public async Task Record(String path)
+        {
+            string fullpath = DoSave(path);
+            if (fullpath == null)
+            {
+                return;
+            }
+            await Task.Run(() => monitorVoiceGeneration(fullpath));
+            new WavPlayer(fullpath).PlaySync();
+        }
+
+        private string DoSave(string path)
         {
             String fullpath = Path.GetFullPath(path);
 
@@ -50,16 +70,22 @@ namespace VoiceConsoroid
                 Console.WriteLine("{0} と同名のディレクトリが存在するため保存処理を中断します。");
                 return null;
             }
-            if (!DoSave(fullpath))
+            if (!SaveImpl(fullpath))
             {
                 return null;
             }
 
-            if(sleep > 0)
+            System.Threading.Thread.Sleep(500);
+            return fullpath;
+        }
+
+        private void monitorVoiceGeneration(string filepath)
+        {
+            // 0.1sec間隔でwavファイル生成を待つ.
+            while (!File.Exists(filepath))
             {
-                System.Threading.Thread.Sleep(sleep);
+                System.Threading.Thread.Sleep(100);
             }
-            return new WavPlayer(fullpath);
         }
 
         /// <summary>
@@ -68,7 +94,7 @@ namespace VoiceConsoroid
         /// </summary>
         /// <param name="path"></param>
         /// <param name="waitingTime">保存ボタンを押してから待機する時間(msec).</param>
-        protected abstract bool DoSave(String path, int waitingTime = 1000);
+        protected abstract bool SaveImpl(String path, int waitingTime = 1000);
 
         /// <summary>
         /// 指定した名前に一致するディレクトリの存在有無を確認する。

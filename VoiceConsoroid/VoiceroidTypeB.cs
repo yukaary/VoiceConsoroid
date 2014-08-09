@@ -63,7 +63,7 @@ namespace VoiceConsoroid
             User32Util.SendMessageSafety(playButton, BM_CLICK, 0, 0);
         }
 
-        protected override bool DoSave(string path, int waitingTime = 1000)
+        protected override bool SaveImpl(string path, int waitingTime = 1000)
         {
             IntPtr hwndPtr = FindSaveButton();
             User32Util.SendMessageSafety(hwndPtr, BM_CLICK, 0, 0, 100);

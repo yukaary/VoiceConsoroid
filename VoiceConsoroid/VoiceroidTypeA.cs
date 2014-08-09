@@ -51,7 +51,7 @@ namespace VoiceConsoroid
             User32Util.PostMessageLocal(playButton, WM.NULL, 0, 0);
         }
 
-        protected override bool DoSave(string path, int waitingTime = 1000)
+        protected override bool SaveImpl(string path, int waitingTime = 1000)
         {
             IntPtr hwndPtr = FindSaveButton();
 
